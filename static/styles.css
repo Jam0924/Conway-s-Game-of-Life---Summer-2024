@@ -1,0 +1,205 @@
+.container {
+    /* Create a container class that can hold elements and center all of them in the page*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 15px;
+    text-align: center;
+    background-color: rgba(0,0,0,0.85);
+}
+
+
+.Title {
+    /* A class for the main title of the game. */
+    text-shadow: 0px 2.5px gray;
+    font-size: 100px;
+    white-space: nowrap;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    color:white;
+}
+
+.TitleButton {
+    /* A class for all buttons on the title screen */
+    text-size: 30px;
+    padding: 12px 70px;
+    font-size: 25px;
+    background: grey;
+    color: black;
+    text-decoration: bold;
+    box-shadow:none;
+    outline: none;
+    border: none;
+    margin: 5px;
+}
+
+.cell {
+    /* The settings for all of the cells on the board */
+    width: 30px;
+    height: 30px;
+    color: white;
+    background: black;
+    box-shadow:none;
+    outline: none;
+    border: 1px solid #1F3B4D;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-shrink: 0;
+}
+
+
+.error {
+    /*  Change paragraph elements with the class error to be red*/
+    color: red;
+}
+
+.scrollbars{
+    /* Added to a div element to give it a scrollbar */
+    overflow-x: auto;
+    overflow-y: auto;
+    height: 100vh;
+    width: 100vw;
+}
+
+.scrollbars::-webkit-scrollbar {
+    /* Customize the scrollbar itself */
+    height: 10px;
+    width: 10px;
+    background-color: black;
+}
+
+.scrollbars::-webkit-scrollbar-thumb {
+    /* Customize the thumb of the scrollbar */
+    background: white;
+    width: 20px;
+    border-radius: 20px;
+}
+
+.scrollbars::-webkit-scrollbar-corner {
+    /* Make the areas where the horizontal and vertical scrollbars intersect black */
+    background: black;
+}
+.FirstButtonRow{
+    /* A special div class for the first row of buttons so that it wont go under the task bar */
+    display: flex;
+    margin-top:5vh;
+}
+
+.RestButtons{
+    /* A div clas for the remaining rows of buttons */
+    width: 100%;
+    display: flex;
+}
+
+.TaskBar {
+    /* A div class for a task bar that it at the top of every page */
+    width: 100vw;
+    height: 5vh;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background: black;
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+}
+
+.HomeIcon, .RunIcon, .PauseIcon, .StepIcon, .PrevIcon, .ClearIcon, .SpeciesIcon {
+    /* Make all icons to have 10px of padding */
+    padding: 10px;
+}
+
+.RightIconsStart {
+    /* Float this element to the right so that when we add more elements on the right
+    they appear after it.*/
+    padding: 10px;
+    float: right;
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+body, html{
+    /* Remove default margin and padding properties on body and html*/
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    /* Change the background of the body to be black on all pages */
+    background: black;
+}
+
+.settings{
+    /*A class for all elements inside of the settings page*/
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.SettingsSubmit, .RestoreDefaults, .BackToGame{
+    /* A class for all buttons inside of the settings page*/
+    background: lightblue;
+    box-shadow:none;
+    outline: none;
+    border: none;
+    font-size: 25px;
+    border-radius: 10px;
+    padding: 5px 15px;
+}
+
+p, h1, h2{
+    /* Set the color for h1, h2, and paragraph elements to be white */
+    color: white;
+}
+
+.RulesTitle{
+    /*A class used on the common patterns pages and the rules page to make a title*/
+    color: white;
+    padding-top: 7vh;
+    text-align: center;
+}
+
+.RulesBody {
+    /*A class used on the common patterns pages and the rules page to style the headers*/
+    text-align: center;
+}
+
+.AboutParagraph {
+    /* A class for the common patterns page and the rules page to style the paragraph elements*/
+    margin-left: 350px;
+    margin-right: 350px;
+    text-align:center;
+}
+
+.stats {
+    /* A div element class for statistics that overlays above the grid of buttons to show
+    the currently simulation statistics.*/
+    padding: 10px;
+    margin-bottom: 20px;
+    position: fixed;
+    z-index: 2;
+    display: flex;
+    flex-shrink: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    pointer-events: none;
+    color: #6666ff;
+}
+
+.HomeBackground {
+    /* A class that sets the home background to be a gif of the game operating */
+    background-image: url('/static/cgol_background.gif');
+    background-size: cover;
+    background-position: center 5.5vh;
+    background-repeat: no-repeat;
+}
+
+.center {
+    /* A class to center images in the page */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
