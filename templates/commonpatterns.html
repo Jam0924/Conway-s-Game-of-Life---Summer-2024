@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!-- Notify the webpage that the language is english-->
+<html lang="en">
+
+    <head>
+        <!-- Set character set and also configure viewport to work for all devices-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <!-- Link the styles.css page as a stylesheet-->
+        <link href="/static/styles.css" rel="stylesheet">
+        <!-- Set title of page -->
+        <title>Conways Game Of Life</title>
+    </head>
+    <body>
+        <!-- Create a task bar that contains the home icon and the settings icon-->
+        <div class = "TaskBar">
+            <!-- Configure icons to be images in the task bar-->
+            <img class = "HomeIcon" src = "/static/home_icon.png" alt = "Home" width = 40px height = 40px>
+            <!-- Settings icon has class RightIconsStart so that CSS knows after this element all taskbar elements should be on the right-->
+            <img class = "RightIconsStart" src = "/static/settings_icon.png" alt = "Settings" width = 40px height = 40px>
+        </div>
+
+        <script>
+            // When the home icon is clicked, move the window location to be home page (index.html)
+            document.querySelector(".HomeIcon").addEventListener("click", function(){
+                window.location.href = "/"
+            });
+            // When the settings icon is clicked, move window location to be settings page
+            document.querySelector(".RightIconsStart").addEventListener("click", function(){
+                window.location.href = "/settings"
+            });
+        </script>
+
+
+        <!-- Create a h1 element for the title of the page-->
+        <h1 class = "RulesTitle"> Common Patterns </h1>
+
+        <!-- Use the same clases as the rules page since the formatting is extremely similar-->
+        <!-- Use center class for images to center them in the middle of the page.-->
+
+        <!-- Display the image for the glider, use h1 to name the patterns, and then include an about paragraph
+        to describe what the pattern does.-->
+        <img src = "/static/glider.png" alt = "glider" width = 400px height = 400px class = "center">
+        <h1 class = "RulesBody">Glider</h1>
+        <p class = "AboutParagraph"> This glider will travel down your screen diagonally until it reaches the end. Since this version of Conway's Game of Life is limited, when it reaches
+            the end it becomes a still-life box! Throw another glider at the box to destory it. </p>
+
+        <!-- Display the image for the ring of fire, use h1 to name the pattern, and then include an about paragraph
+        to describe what the pattern does.-->
+        <img src = "/static/ring_of_fire.png" alt = "glider" width = 400px height = 400px class = "center">
+        <h1 class = "RulesBody">Ring of Fire</h1>
+        <p class = "AboutParagraph"> With this design, it is an oscillating pattern that has the dots around spinning forever in a circle! This is a great pattern for backgrounds and also starting
+            to learn about the possilbities that Conway's Game of Life offers.
+        </p>
+
+        <!-- Display the image for the quadpole, use h1 to name the pattern, and then include an about paragraph
+        to describe what the pattern does.-->
+        <img src = "/static/quadpole.png" alt = "glider" width = 400px height = 400px class = "center">
+        <h1 class = "RulesBody"> Quadpole </h1>
+        <p class = "AboutParagraph"> Watch these two poles passing back their cells together forever! This is another oscillating pattern that is used frequently as a demonstration for people
+            who are just starting to use Conway's Game of Life! Can you figure out how to make the pole longer?
+        </p>
+    </body>
+
+</html>
