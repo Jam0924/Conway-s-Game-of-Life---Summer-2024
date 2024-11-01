@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!-- Notify the webpage that the language is english-->
+<html lang="en">
+    <head>
+        <!-- Set the character set and adjust the viewport for any device size-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+
+        <!-- Link styles.css to this page as a stylesheet-->
+        <link href="/static/styles.css" rel="stylesheet">
+
+        <title>Conways Game Of Life</title>
+
+        <script>
+            // A function restore defaults that calls the python restore defaults route
+            // and resets all settings
+            function RestoreDefaults() {
+                fetch('/RestoreDefaults', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+                // Make sure you get the expected response code, and then refresh the page
+                .then(response => {
+                    if (response.status === 204){
+                        window.location.href = "/settings"
+                    }
+                });
+            }
+        </script>
+
+    </head>
+    <body>
+        <!-- Create a task bar at the top of the screen-->
+        <div class = "TaskBar">
+            <!-- Add all icons for this page to the screen-->
+            <img class = "HomeIcon" src = "/static/home_icon.png" alt = "Home" width = 40px height = 40px>
+            <!-- The settngs icon has the RightsIconsStart as its class to let the CSS know that
+            any icons after it should appear to the right of it on the right side of the page-->
+            <img class = "RightIconsStart" src = "/static/settings_icon.png" alt = "Settings" width = 40px height = 40px>
+        </div>
+
+        <script>
+            // When the home icon is clicked, redirect the user to the home page
+            document.querySelector(".HomeIcon").addEventListener("click", function(){
+                window.location.href = "/"
+            });
+            // When the settings icon is clicked, refresh the page.
+            document.querySelector(".RightIconsStart").addEventListener("click", function(){
+                window.location.href = "/settings"
+            });
+        </script>
+        <!-- Use a container to make sure that everything appears in the middle of the page-->
+        <div class = "container">
+            <!-- Create a title for the page-->
+            <h1> Settings </h1>
+            <!-- Create a subtitle for the running settings-->
+            <h2> Running Settings </h2>
+            <!-- Make a form that submits its data when submitted to the /settings route
+            using a POST method.-->
+            <form method = "POST" action = "/settings">
+            <!-- Create a rows setting, and get the jinja rows variable to set as
+            the starter value of the form for user convienece, and so they can see what they currently have
+            . Repeat this for all running settings-->
+            <p class = "settings">Rows: </p>
+            <input type = "text" name = "rows" class = "settings" value = {{rows}}>
+            <br>
+
+            <p class = "settings">Columns: </p>
+            <input type = "text" name = "columns" class = "settings" value = {{columns}}>
+            <br>
+
+            <p class = "settings">Time Between Generations (in seconds): </p>
+            <input type = "text" name = "timing" class = "settings" value = {{timing}}>
+            <br>
+
+            <!-- Create a subtitle for Rules Settings-->
+            <h2> Rules Settings </h2>
+
+            <!-- Make input types with text for the the rules settings, and set their default
+            values correspondingly with the jinja variables that are returned by the GET
+            route for settings.-->
+            <p class = "settings">Minimum Cells adjacent for Survival: </p>
+            <input type = "text" name = "MinCells" class = "settings" value = {{MinCells}}>
+            <br>
+
+            <p class = "settings">Maximum Cells adjacent before death: </p>
+            <input type = "text" name = "MaxCells" class = "settings" value = {{MaxCells}}>
+            <br>
+
+            <p class = "settings">Cells adjacent needed for repopulation: </p>
+            <input type = "text" name = "CellsRepop" class = "settings" value = {{CellsRepop}}>
+            <br>
+            <!-- Whenever the user inputs an invalid input, the python function will flash
+            a message displaying the error and redirects back to the settings page-->
+            <!-- Get these flashed messages and display them all for the user so that they
+            can see their invalid inputs-->
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class = "error">{{message}}</p>
+                    {%endfor%}
+                {%endif%}
+            {%endwith%}
+            <!-- Create a submit button for the form with text save-->
+            <button type = "submit" class = "SettingsSubmit">Save</button>
+        </form>
+            <!-- Create two more buttons outside the form to restore defaults and to go back to the game.-->
+            <br>
+            <button class = "RestoreDefaults">Restore Defaults</button>
+            <button class = "BackToGame">Back To Game</button>
+        </div>
+        <script>
+            // When the restore defaults button is pressed, call the restore defaults function.
+            document.querySelector(".RestoreDefaults").addEventListener("click", RestoreDefaults)
+            // When the back to game button is pressed, redirect the user back to the game page.
+            // This will not reset the settings that the user inputted.
+            document.querySelector(".BackToGame").addEventListener("click", function(){
+                window.location.href = "/game"
+            });
+        </script>
+    </body>
+
+</html>

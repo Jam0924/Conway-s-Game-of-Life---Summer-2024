@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--Let the HTML page know that the language is English-->
+<html lang="en">
+
+    <head>
+        <!-- Set the character set and make it so that the viewport adapts to any device size-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+
+        <!-- Link styles.css to this HTML page as a style sheet. -->
+        <link href="/static/styles.css" rel="stylesheet">
+
+        <title>Conways Game Of Life</title>
+
+    </head>
+    <body>
+        <!-- Create a task bar that contains the home icon and the settings icon-->
+        <div class = "TaskBar">
+            <!-- Configure the icons to be in the task bar-->
+            <img class = "HomeIcon" src = "/static/home_icon.png" alt = "Home" width = 40px height = 40px>
+            <!-- The settings icon has the class RightIconsStart to tell the CSS
+            that all elements after it should be to the right of it and on the right
+        side of the page-->
+            <img class = "RightIconsStart" src = "/static/settings_icon.png" alt = "Settings" width = 40px height = 40px>
+        </div>
+
+        <script>
+            // When the home icon is clicked redirect the user to the home page
+            document.querySelector(".HomeIcon").addEventListener("click", function(){
+                window.location.href = "/"
+            });
+            // When the settings icon is clicked redirect the user to the settings page
+            document.querySelector(".RightIconsStart").addEventListener("click", function(){
+                window.location.href = "/settings"
+            });
+        </script>
+
+
+        <!-- Create a title for the about section of the  page-->
+        <h1 class = "RulesTitle"> About </h1>
+        <!-- Add the about paragraph-->
+        <p class = "AboutParagraph"> Conways Game of Life is a program that is meant to simulate how given populations might grow given the certain rules that restrict their population. A simple combination of 3
+            cells can become something much larger, while 1 cell on its own will die. Some configurations have the power to repeat forever, or move across the screen, while others have
+            the ability to grow indefinitely until it reaches the border of the area. Have fun testing out patterns and configuring the settings to generate new and unique patterns that
+            have never been seen before! </p>
+
+        <!-- Create a title for the rules secton of the page-->
+        <h1 class = "RulesBody">Rules</h1>
+        <p class = "AboutParagraph"> In Conways Game of Life, a cell's fate is decided by its neighboring cells. Whether there are too many, or not enough, a cell's survival or death in the next
+            generation depends on its surroundings.
+        </p>
+
+        <!-- Use an h2 tag to name the rule and describe how it applies to the game-->
+        <h2 class = "RulesBody">Underpopulation</h2>
+        <p class = "AboutParagraph"> In Conways Game of Life, if a cell has less than 2 cells adjacent to it, in the next generation that cell will be killed as a result of underpopulation.
+            This can be adjusted inside of settings to be any number between 1-8. When populations have a high criteria for underpopulation, the population struggles to grow and will often die
+            earlier then populations with a lower underpopulation critera.
+        </p>
+
+        <!-- Use an h2 tag to name the rule and describe how it applies to the game-->
+        <h2 class = "RulesBody">Overpopulation</h2>
+        <p class = "AboutParagraph"> In Conways Game of Life, if a cell has more than 3 cells adjacent to it, in the next generation that cell will die due to overpopulation. This can be adjusted
+            in settings to be any number between 1-8. Populations with a high criteria for overpopulation tend to survive longer due to them being able to survive in extremely saturated areas. This
+            can result in clusters of cells in one area that may survive over generations. However, populations with a low criteria for overpopulation will strugle to survive, and will tend to be
+            sparse and further apart on the grid.
+        </p>
+
+        <!-- Use an h2 tag to name the rule and describe how it applies to the game-->
+        <h2 class = "RulesBody">Repopulation</h2>
+        <p class = "AboutParagraph"> In Conways Game of Life, if a dead cell has exactly 3 cells adjacent to it, in the next generation that cell will come to life. This can be adjusted in settings
+            to be any number between 1-8. Populations with a low number of cells needed for repopulation will grow extremely quickly, however depending on the critera for over and under population
+            this may not have the same effect. A unique combination of repopulation, overpopulation, and underpopulation settings can create millions of unique patterns.
+        </p>
+    </body>
+</html>

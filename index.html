@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!-- Let the document know that it is in English-->
+<html lang="en">
+
+    <head>
+        <!-- Set the character set and also modify the viewport to work for all device sizes-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+
+        <!-- Link styles.css to this document as a stylesheet-->
+        <link href="/static/styles.css" rel="stylesheet">
+
+        <title>Conways Game Of Life</title>
+
+    </head>
+    <!-- Set the background to be the repeating gif -->
+    <body class = "HomeBackground">
+        <!-- Add a taskbar element to the top of the page-->
+        <div class = "TaskBar">
+            <!-- Add icons for to go to the homepage and to the settings page-->
+            <img class = "HomeIcon" src = "/static/home_icon.png" alt = "Home" width = 40px height = 40px>
+            <!-- The settings icon has the class RightIconsStart so that all elements
+            in the taskbar after it will appear to the right of it.-->
+            <img class = "RightIconsStart" src = "/static/settings_icon.png" alt = "Settings" width = 40px height = 40px>
+        </div>
+
+        <script>
+            // When the home icon is clicked, redirect the user to the homepage
+            document.querySelector(".HomeIcon").addEventListener("click", function(){
+                window.location.href = "/"
+            });
+            // When the settings icon is clicked, redirect the user to the settings page
+            document.querySelector(".RightIconsStart").addEventListener("click", function(){
+                window.location.href = "/settings"
+            });
+        </script>
+        <!-- Create a container in the middle of the room-->
+        <div class = "container">
+            <!-- Add the title of the game-->
+            <h1 class = "Title"> Conway's Game Of Life</h1>
+            <!-- Make the play button a form, and when it is clicked submit secret values
+            to the / route (index.html) with a post command.-->
+            <form action= "/" method = "POST">
+                <!-- We use a form so we can secretley submit the user's deviceWidth and
+                deviceHeight-->
+                <input type = "hidden" id="deviceWidth" name = "deviceWidth">
+                <input type = "hidden" id="deviceHeight" name = "deviceHeight">
+                <button class = "TitleButton" type = "submit" id = "start_game"> Play </button>
+            </form>
+            <!-- Create two more buttons to redirect the user to the CommonPatterns page
+            and the Rules page.-->
+            <button class = "TitleButton" id = "Rules"> About & Rules </button>
+            <button class = "TitleButton" id = "CommonPatterns">Common Designs</button>
+
+            <script>
+                // Whenever the page first loads, set the elements with id device dimensions
+                // to be the actual dimensions of the viewport
+                window.onload = function() {
+                    document.getElementById('deviceWidth').value = window.innerWidth;
+                    document.getElementById('deviceHeight').value = window.innerHeight;
+
+                };
+                // When the users clicks the rules button, redirect them to the rules page
+                document.getElementById("Rules").addEventListener("click", function(){
+                    window.location.href = "/rules"
+                });
+                // When the user clicks the CommonPatterns button, rediret them to the common
+                // patterns page.
+                document.getElementById("CommonPatterns").addEventListener("click", function(){
+                    window.location.href = "/commonpatterns"
+                });
+            </script>
+        </div>
+
+    </body>
+
+</html>
